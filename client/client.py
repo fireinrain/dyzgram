@@ -76,15 +76,22 @@ if _enable_proxy and _proxy_mode in ['socks', 'http', 'mtproxy']:
 
     elif _proxy_mode == 'mtproxy':
         socks_config = GLONAL_CONFIG['proxy']['type'][_proxy_mode]
-        proxy = (socks_config['host'], socks_config['port'], socks_config['secret'])
+        secret_ = socks_config['secret']
+        # remove ee head and 7 from secret
+        if secret_.startswith('7'):
+            secret_ = secret_[1:]
+        elif secret_.startswith('ee'):
+            secret_ = secret_[2:]
+        proxy = (socks_config['host'], socks_config['port'], secret_)
+        # 需要注意这里的mtproxy 是需要开启tls的
+        from faketls import ConnectionTcpMTProxyFakeTLS
         tgclient = TelegramClient(
             _nickname,
             _api_id,
             _api_hash,
-
             # Use one of the available connection modes.
             # Normally, this one works with most proxies.
-            connection=connection.ConnectionTcpMTProxyRandomizedIntermediate,
+            connection=ConnectionTcpMTProxyFakeTLS,
 
             # Then, pass the proxy details as a tuple:
             #     (host name, port, proxy secret)
@@ -123,4 +130,3 @@ class Sentry(object):
 
 
 sentry_reporter = Sentry(_sentry_reporter)
-
