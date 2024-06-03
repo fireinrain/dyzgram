@@ -1,0 +1,25 @@
+[telegram]
+nickname = "furina princess"
+app_id = ""
+app_hash = ""
+
+[proxy]
+enable = false
+mode = "socks"
+
+[proxy.type.socks]
+host = "127.0.0.1"
+port = 45678
+user = "user"
+password = "password"
+
+[proxy.type.mtproxy]
+host = "127.0.0.1"
+port = 65535
+secret = ""
+
+[proxy.type.http]
+host = "127.0.0.1"
+port = 65535
+
+
