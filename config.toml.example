@@ -1,25 +1,28 @@
 #电报配置
 #替换为自己的api_id 和api_hash
 [telegram]
-nickname = "furina princess"
+nickname = "furina-princess"
 api_id = "xxxx"
 api_hash = "xxxx"
 
+#代理配置
+#用那种代理mode就设置为那种
 [proxy]
 enable = true
-mode = "socks"
+mode = "mtproxy"
 
 #socks 只支持socks5
 [proxy.type.socks]
-host = "xxxx.131433.xyz"
-port = 26370
-username = "xxxx"
-password = "xxxx"
+host = "127.0.0.1"
+port = 8964
+username = "xxxxxxxx"
+password = "xxxxxxxx"
 #tg官方mtproxy代理
+#需要注意这里的mtproxy 是需要开启tls的
 [proxy.type.mtproxy]
 host = "127.0.0.1"
 port = 65535
-secret = ""
+secret = "xxxxxxxxxxxxxxxxxxxxxxxx"
 #落后的http代理
 [proxy.type.http]
 host = "127.0.0.1"
