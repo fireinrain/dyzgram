@@ -40,15 +40,14 @@ if _enable_proxy and _proxy_mode in ['socks', 'http', 'mtproxy']:
     if _proxy_mode == 'socks':
         socks_config = GLONAL_CONFIG['proxy']['type'][_proxy_mode]
         proxy = None
+        # socks need auth
+        proxy = {
+            'proxy_type': python_socks.ProxyType.SOCKS5,
+            'addr': socks_config['host'],
+            'port': socks_config['port'],
+            'rdns': True  # (optional) whether to use remote or local resolve, default remote
+        }
         if socks_config['username'] != "":
-            # socks need auth
-            proxy = {
-                'proxy_type': python_socks.ProxyType.SOCKS5,
-                'addr': socks_config['host'],
-                'port': socks_config['port'],
-                'rdns': True  # (optional) whether to use remote or local resolve, default remote
-            }
-        else:
             # don't need auth
             proxy.update({'username': socks_config['username'],
                           'password': socks_config['password']})
@@ -57,7 +56,7 @@ if _enable_proxy and _proxy_mode in ['socks', 'http', 'mtproxy']:
             _nickname,
             _api_id,
             _api_hash,
-            proxy=proxy
+            proxy=proxy,
         )
 
     elif _proxy_mode == 'http':
@@ -72,7 +71,7 @@ if _enable_proxy and _proxy_mode in ['socks', 'http', 'mtproxy']:
             _nickname,
             _api_id,
             _api_hash,
-            proxy=proxy
+            proxy=proxy,
         )
 
     elif _proxy_mode == 'mtproxy':
@@ -92,10 +91,18 @@ if _enable_proxy and _proxy_mode in ['socks', 'http', 'mtproxy']:
             #
             # If the proxy has no secret, the secret must be:
             #     '00000000000000000000000000000000'
-            proxy=proxy
+            proxy=proxy,
         )
 
     logger.info(f"Use proxy for dyzgram client: {_proxy_mode}:{_proxy_config}")
+
+else:
+    tgclient = TelegramClient(
+        _nickname,
+        _api_id,
+        _api_hash,
+    )
+    logger.info(f"Use direct connect for dyzgram client: {_proxy_mode}:{_proxy_config}")
 
 
 class Sentry(object):
@@ -116,3 +123,4 @@ class Sentry(object):
 
 
 sentry_reporter = Sentry(_sentry_reporter)
+
