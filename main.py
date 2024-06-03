@@ -1,6 +1,4 @@
-import config
-
+from logs import logger
 
 if __name__ == '__main__':
-    proxy_enable_ = config.GLONAL_CONFIG['proxy']['enable']
-    print(proxy_enable_)
+    logger.info("starting running dyzgram client, please wait...")
