@@ -1,38 +1,24 @@
 import utils
 from logs import logger
 from client import tgclient
-
+from config import GLONAL_CONFIG
 from telethon import TelegramClient
-from telethon.errors import TimeoutError
+from auth import auth_by_qrcode, auth_by_tel_code
 
 
 async def main(client: TelegramClient):
-    if not client.is_connected():
-        await client.connect()
+    enable_qrcode_ = GLONAL_CONFIG['telegram']['enable_qrcode']
+    if isinstance(enable_qrcode_, str):
+        enable_qrcode_ = True
+    if enable_qrcode_:
+        await auth_by_qrcode(client)
     else:
-        await client.connect()
+        await auth_by_tel_code(client)
 
-    # Ensure the client is not already logged in
-    if not await client.is_user_authorized():
-        # Generate the QR code
-        login_token = await client.qr_login()
-        logger.info(f"Telethon client connect status: {client.is_connected()}")
-        print("Please scan the QR code with your Telegram app to log in.")
-        qr_login_finish = False
-
-        while not qr_login_finish:
-            utils.display_url_as_qrcode(login_token.url)
-            # Important! You need to wait for the login to complete!
-            try:
-                qr_login_finish = await login_token.wait(30)
-            except TimeoutError:
-                await login_token.recreate()
     me_ = await tgclient.get_me()
     print(me_)
 
 
 if __name__ == '__main__':
     logger.info("starting running dyzgram client, please wait...")
-
-    with tgclient:
-        tgclient.loop.run_until_complete(main(tgclient))
+    tgclient.loop.run_until_complete(main(tgclient))
