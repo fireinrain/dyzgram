@@ -21,7 +21,7 @@ class Loggin:
         loguru_logger.remove()
         loguru_logger.add(sink=sys.stdout, level=self.level, colorize=True)
         loguru_logger.add("dyzgram.log", level=self.level, rotation="5 MB", retention=2,
-                          colorize=True)  # Output log messages to a file
+                          colorize=True, encoding="utf-8")  # Output log messages to a file
         return loguru_logger
 
 

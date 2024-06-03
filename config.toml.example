@@ -2,8 +2,8 @@
 #替换为自己的api_id 和api_hash
 [telegram]
 nickname = "furina princess"
-api_id = ""
-api_hash = ""
+api_id = "xxxx"
+api_hash = "xxxx"
 
 [proxy]
 enable = true
@@ -11,10 +11,10 @@ mode = "socks"
 
 #socks 只支持socks5
 [proxy.type.socks]
-host = "127.0.0.1"
-port = 45678
-user = "user"
-password = "password"
+host = "xxxx.131433.xyz"
+port = 26370
+username = "xxxx"
+password = "xxxx"
 #tg官方mtproxy代理
 [proxy.type.mtproxy]
 host = "127.0.0.1"
