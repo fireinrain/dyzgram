@@ -1,25 +1,41 @@
+#电报配置
+#替换为自己的api_id 和api_hash
 [telegram]
 nickname = "furina princess"
-app_id = ""
-app_hash = ""
+api_id = ""
+api_hash = ""
 
 [proxy]
-enable = false
+enable = true
 mode = "socks"
 
+#socks 只支持socks5
 [proxy.type.socks]
 host = "127.0.0.1"
 port = 45678
 user = "user"
 password = "password"
-
+#tg官方mtproxy代理
 [proxy.type.mtproxy]
 host = "127.0.0.1"
 port = 65535
 secret = ""
-
+#落后的http代理
 [proxy.type.http]
 host = "127.0.0.1"
 port = 65535
+
+#错误日志上报
+#如果有自己的sentry可替换自己的dsn
+#没有就使用默认
+[sentry]
+enable = true
+dsn = "https://538c48485d7998478f984509fabfc544@o4507366754680832.ingest.us.sentry.io/4507366758612992"
+
+#日志设置
+[logger]
+level = "debug"
+enable = true
+
 
 
