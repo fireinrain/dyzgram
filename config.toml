@@ -2,8 +2,8 @@
 #替换为自己的api_id 和api_hash
 [telegram]
 nickname = "furina-princess"
-api_id = "27175348"
-api_hash = "09410bed8eb3adfc59f01679a47b6194"
+api_id = "xxxx"
+api_hash = "xxxxxxxx"
 #是否开启二维码扫描登录
 #不开启默认是电话+sms
 enable_qrcode = false
@@ -25,7 +25,7 @@ password = "xxxxxxxx"
 [proxy.type.mtproxy]
 host = "47.238.238.53"
 port = 65535
-secret = "ee4c7984f11fafba101c7e406e925bec81617a7572652e6d6963726f736f66742e636f6d"
+secret = "xxxxx"
 #落后的http代理
 [proxy.type.http]
 host = "127.0.0.1"
