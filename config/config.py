@@ -1,3 +1,3 @@
 import toml
 
-GLONAL_CONFIG = toml.load("./config.toml")
+GLONAL_CONFIG = toml.load("../funcs/config.toml")

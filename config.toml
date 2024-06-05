@@ -1,25 +1,31 @@
 #电报配置
 #替换为自己的api_id 和api_hash
 [telegram]
-nickname = "furina princess"
-api_id = ""
-api_hash = ""
+nickname = "furina-princess"
+api_id = "27175348"
+api_hash = "09410bed8eb3adfc59f01679a47b6194"
+#是否开启二维码扫描登录
+#不开启默认是电话+sms
+enable_qrcode = false
 
+#代理配置
+#用那种代理mode就设置为那种
 [proxy]
 enable = true
-mode = "socks"
+mode = "mtproxy"
 
 #socks 只支持socks5
 [proxy.type.socks]
 host = "127.0.0.1"
-port = 45678
-user = "user"
-password = "password"
+port = 8964
+username = "xxxxxxxx"
+password = "xxxxxxxx"
 #tg官方mtproxy代理
+#需要注意这里的mtproxy 是需要开启tls的
 [proxy.type.mtproxy]
-host = "127.0.0.1"
+host = "47.238.238.53"
 port = 65535
-secret = ""
+secret = "ee4c7984f11fafba101c7e406e925bec81617a7572652e6d6963726f736f66742e636f6d"
 #落后的http代理
 [proxy.type.http]
 host = "127.0.0.1"
@@ -36,6 +42,15 @@ dsn = "https://538c48485d7998478f984509fabfc544@o4507366754680832.ingest.us.sent
 [logger]
 level = "debug"
 enable = true
+
+
+################################功能配置################################
+
+#modelscope tts
+#可配置多个cookie 保证高可用
+[modelscope]
+cookies = ["cna=3s5sHoS0V30CAXd7O3ebpraD; csrf_session=MTcxNzU3OTQ2MXxEdi1CQkFFQ180SUFBUkFCRUFBQU12LUNBQUVHYzNSeWFXNW5EQW9BQ0dOemNtWlRZV3gwQm5OMGNtbHVad3dTQUJCM1RUVnZOVkZSU0dkcmEwTmhNbkZ5fIbcoDlPiS4P7aWptGSV1plynGo-Ki3tXnmQl7wYWl7h; csrf_token=FUanfy_f6lIiFfpiaHX382FumIc%3D; _samesite_flag_=true; cookie2=115456281ca50d4d71a18032c6b53cfa; t=6a448e284005638e94db025d947e532e; _tb_token_=fe5159b365540; csg=c77c5372; m_session_id=0ca660de-eb51-4da0-8d2b-1fd0b13754c1; h_uid=2218036406498; _xsrf=2|60db883d|ce61e136fe6680e4fd0550cf4313251d|1717584013; tfstk=f5JtTh9xlDE9k4lDChGHuALvBEon-dKNpF-7nZbgGeLpV3zGGhXGD-Le0dbGncRdkeQUI-jiuxLvcO12sZbGktK2yD0oEYxwbtWor4DlO2Enrt7jnt63gy3lh40oKWqC_VXXiqP4dwKC8iI_fRTfRMsGRGsf5E_COgsu5t6XlHidciq_G51bAksGVeJK3wa1l-pnyCRXRu6ah-9sQ1QJHS2bhpsO6Kt1JGjMpGCOr6bqTzJJVh9PDKo7MZKe1FjekY3dFQ8pH_TS-JLVwI9GddgIF65XdesBSmVVvIKXUO5a0-8vqFpAZFDIfEW1cE5yn4yN5ntyUQX-BzS9O3LdZp43Ug5JELHZVzbRm5iKvSPV1MYDmRyQCjL-dMQoXqP4g60FvamKrSPV19jdrDA8gS5Hy; isg=BA8PXmaWtWa3D7If8axbi7nUnqUZNGNWotwRTSEckn6F8C_yKQFJpj-i9ijOiDvO",
+    "csrf_session=MTcxNzU4MTgzN3xEdi1CQkFFQ180SUFBUkFCRUFBQU12LUNBQUVHYzNSeWFXNW5EQW9BQ0dOemNtWlRZV3gwQm5OMGNtbHVad3dTQUJCUlFrOWxjVzV2VVRJeGIzVkhRWGhXfI7JLwlgfC5iBKIpMofHGtybBuBCswOR_ciBmhvSBMTD; csrf_token=RehcimXTr_LiR54mdrUizw_LIiY%3D; _samesite_flag_=true; cookie2=14e3e9bc2c2065adb4d38ed6a8ad4958; t=fc841ce80023548226f3452185bf08ca; _tb_token_=e1e59d8641395; csg=6778d638; m_session_id=b845b26b-335e-4b9c-a7ba-ba35a4e984b1; h_uid=2218028672555; tfstk=ftzIv027r8UNcuVsEDCZ5PyqX53SVJ_VyQG8i7Lew23peLFxQDkFE6fSe8eiUkPRKuw_wSKUzkuEeRZQpWkrTMQgC-etYDH89NnSQ82PtYPp2_wgCvLETWR3j-Pv8ySnzUgnr4BV3Z72xW0oy7pAH7H365cJjNcTwWVnrCAweirTt3woOWCSy83tWXlmyHH8eV3tTALKwehJB1GoBY3-veFt6Xl2vYnKeezBmb_IdW6rnBFguduL9AT7ZPGKAHVKCUL85liIHEk6yUUst54YyYLdlAEU2yuTJOpEWSqapfgfRKcQXSws0PJwzqE0Czixlg5nv7Z_E2zOwHHYYJoz-c9OEfZTi8cxAd-gH5P4-c45hdHuYj0tNzfvVYN8irqqkgSMuxsXg3OsmUGs3116q3z0KyD5q9xMDDhiOfC11pwovfcss116qamKsf81119C1; isg=BKWln5B1L8Qqb0uYLzYLCOmstGff4ll0_MJLz6eKYVzrvsUwbzJpRDNYSCrIvnEs"]
 
 
 
